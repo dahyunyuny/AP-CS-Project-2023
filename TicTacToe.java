@@ -10,13 +10,12 @@ public class TicTacToe{
     boolean keepGoing;
     public TicTacToe(){
     	board = new char[3][3]; //gameboard using 2D array
-        x = 0;
-    	y = 0;
     	check = true;
     	keepGoing = true;
     }
 	public void play(){	
 	    Scanner scan = new Scanner(System.in);
+	    Random random = new Random();
 	    
 	    for(int i =  0;  i< 3; i++){
             for(int j = 0; j < 3; j++){
@@ -31,7 +30,7 @@ public class TicTacToe{
 					System.out.println("---|---|---");
 				}
 			}
-			System.out.println("Player 1's turn: ");
+			System.out.println("Your turn: ");
 			System.out.println("Please enter the next coordinates");
 			System.out.println("The X coordinate: ");
 			x = scan.nextInt();
@@ -46,7 +45,7 @@ public class TicTacToe{
 				board[x][y] = 'X';
 			}
 			if(checkIfDone() == false){
-			    System.out.println("Player 1 Win!!");
+			    System.out.println("You Win!!");
 			    break;
 			}
 			for(int i = 0; i < 3; i++){
@@ -56,12 +55,15 @@ public class TicTacToe{
 				}
 			}
 			
-			System.out.println("Player 2's turn: ");
-			System.out.println("Please enter the next coordinates");
-			System.out.println("The X coordinate: ");
-			x = scan.nextInt();
-			System.out.println("The Y coordinate: ");
-			y = scan.nextInt();
+			int X;
+			int Y;
+			do{
+			    X = random.nextInt(3);
+			    Y = random.nextInt(3);
+			}
+			System.out.println("Computer's turn: ");
+			System.out.println("Computer placed an 'O' at position (" + X + ", " + Y + ")");
+
 			
 			if(board[x][y] != ' '){
 				System.out.println("Please enter the valid coordinate");
@@ -73,6 +75,9 @@ public class TicTacToe{
 			if(checkIfDone() == false){
 			    System.out.println("Player 2 Win!!");
 			    break;
+			}
+			if(gameOver() == true){
+			    System.out.println("Lame...No one wins...ByeBye");
 			}
 		} 
     }
@@ -151,11 +156,33 @@ public class TicTacToe{
         }
         return true;
     } 
+    public boolean gameOver(){
+        int count = 0;
+        for(int r = 0; r< board.length; r++){
+            for(int c = 0; c< board[0].length; c++){
+                if(board[r][c]!=' '){
+                    count++;
+                }   
+            }
+        }
+        if(count == 9){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public void reset(){
+        if(gameOver()==true&&keepGoing==false){
+            play();
+        }
+    }
     
 
     public static void main(String[] args){
         TicTacToe game = new TicTacToe(); // Create an instance of the TicTacToe class
         game.play();
+        game.reset();
     }
         
 }

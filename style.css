@@ -1,0 +1,36 @@
+h1 {
+  text-align: center;
+}
+
+.game-board {
+  margin: 0 auto;
+  border-collapse: collapse;
+  background-color: #f8f8f8;
+}
+
+.cell {
+  width: 120px;
+  height: 120px;
+  border: 3px solid black;
+  text-align: center;
+  font-size: 80px;
+  cursor: pointer;
+  transition: background-color .4s ease;
+}
+.cell:hover{
+    background-color: #8EFFBE;
+}
+.player-indicater{
+    color: #ff0000;
+}
+
+.image-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; /* Adjust the width as needed */
+  height: auto;
+  z-index: 9999;
+}
+

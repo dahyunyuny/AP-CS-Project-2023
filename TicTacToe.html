@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+   <style>
+     body {
+        background-color: #f1f1f1;
+      }
+      
+      @keyframes floating {
+      0%, 100% {
+      transform: translateX(0px) translateY(0px);
+    }
+    25% {
+      transform: translateX(200px) translateY(-200px);
+    }
+    50% {
+      transform: translateX(-300px) translateY(100px);
+    }
+    75% {
+      transform: translateX(200px) translateY(800px);
+    }
+    }
+    
+    .floating-image {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: floating 10s ease-in-out infinite;
+    }
+      
+
+  </style>
+</head>
+<body>
+  <h1>Tic Tac Toe</h1>
+  <table class="game-board">
+    <tr>
+      <td class="cell"></td>
+      <td class="cell"></td>
+      <td class="cell"></td>
+    </tr>
+    <tr>
+      <td class="cell"></td>
+      <td class="cell"></td>
+      <td class="cell"></td>
+    </tr>
+    <tr>
+      <td class="cell"></td>
+      <td class="cell"></td>
+      <td class="cell"></td>
+    </tr>
+  </table>
+  <img class = "floating-image" src = "zebra.png" style="width: 150px;">
+  <audio id="laughsound" src="laugh.wav"></audio>
+  <audio id="gameoversound" src="gameover.wav"></audio>
+  <img id="drawImage" src="momo.png" style="width: 200px; display: none;" />
+  <img id="drawImage2" src="goodjobcat.png" style="width: 200px; display: none;" />
+  <img id="drawImage3" src="gameover.png" style="width: 200px; display: none;" />
+  <script src="tictactoe.js"></script>
+  <script src="image.js"></script>
+</body>
+</html>
